@@ -1,0 +1,105 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+body{
+
+  background: url("https://www.wallpapertip.com/wmimgs/66-666816_hd-web-background.jpg");
+  background-size:inherit;
+  background-position:top;
+  
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+.row-header{
+  margin:0px auto;
+  padding:0px auto;
+}
+
+.row-content {
+  margin:0px auto;
+  padding: 50px 0px 50px 0px;
+  border-bottom: 1px ridge;
+  min-height:400px;
+}
+
+.footer{
+  background-color: #3e9ce9;
+  margin:0px auto;
+  padding: 0px 1px 0px 0px;
+  transform: translateY(235px);
+  opacity: 85%;
+}
+.jumbotron {
+  padding:70px 30px 70px 30px;
+  margin:0px auto;
+  background: #3d5dec ;
+  color:floralwhite;
+}
+
+address{
+  font-size:80%;
+  margin:0px;
+  color:#0f0f0f;
+}
+
+.navbar-dark {
+  background-color: #512DA8;
+}
+
+.page-enter {
+  opacity: 0.01;
+  transform: translateX(-100%);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateX(0%);
+  transition: all 300ms ease-in;
+}
+
+.page-exit {
+  opacity: 1;
+  transform: translateX(0%);
+}
+
+.page-exit-active {
+  opacity: 0.01;
+  transform: translateX(100%);
+  transition: all 300ms ease-out;
+}
