@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import authHeader from './Authorization';
 const baseUrl = "http://localhost:5000/api/"
 
 
@@ -12,22 +12,22 @@ export default {
 //Blood Donors Api
     dCandidate(url = baseUrl + 'DCandidates/') {
         return {
-            fetchAll: () => axios.get(url),
-            fetchById: id => axios.get(url + id),
-            create: newRecord => axios.post(url, newRecord),
-            update: (id, updateRecord) => axios.put(url + id, updateRecord),
-            delete: id => axios.delete(url + id)
+            fetchAll: () => axios.get(url, { headers: authHeader() }),
+            fetchById: id => axios.get(url + id, { headers: authHeader() }),
+            create: newRecord => axios.post(url, newRecord, { headers: authHeader() }),
+            update: (id, updateRecord) => axios.put(url + id, updateRecord, { headers: authHeader() }),
+            delete: id => axios.delete(url + id, { headers: authHeader() })
         }
     }
 ,
 //Blood Patients Api
     BloodPatient(url = baseUrl + 'BloodPatients/') {
         return {
-            fetchAllPatients: () => axios.get(url),
-            fetchByIdPatients: id => axios.get(url + id),
-            createPatients: newRecord => axios.post(url, newRecord),
-            updatePatients: (id, updateRecord) => axios.put(url + id, updateRecord),
-            deletePatients: id => axios.delete(url + id)
+            fetchAllPatients: () => axios.get(url, { headers: authHeader() }),
+            fetchByIdPatients: id => axios.get(url + id, { headers: authHeader() }),
+            createPatients: newRecord => axios.post(url, newRecord, { headers: authHeader() }),
+            updatePatients: (id, updateRecord) => axios.put(url + id, updateRecord, { headers: authHeader() }),
+            deletePatients: id => axios.delete(url + id, { headers: authHeader() })
         }
 
         

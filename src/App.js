@@ -4,20 +4,50 @@ import './App.css';
 import { store } from "./actions/store";
 import { Provider } from "react-redux";
 import DCandidates from './components/DCandidates';
-import Main from './components/MainPageComponent'
 import BloodPatients from './components/BloodPatients'
 import Login from './components/LoginComponent'
+import Signin from './components/SignIn'
 import PrimarySearchAppBar from './components/HeaderComponent'
 import { Container,BottomNavigation} from "@material-ui/core";
 import { ToastProvider } from "react-toast-notifications";
 import Footer from "./components/FooterComponent"
 import SimpleMap from "./components/MapComponent"
 import GoogleMapReact from 'google-map-react';
-import { Switch, Route,BrowserRouter } from 'react-router-dom';
+import { Switch, Route,BrowserRouter,Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 
-import Signup from "./components/SignupComponent"
+
+import SignUp from "./components/RegistrationComponent"
 import { login } from './actions/Login';
+
+
+
+const PrivateRoute = ({ component: Component, ...rest }) => {
+  const userLoggedIn = localStorage.getItem('user');
+  return (
+    <Route
+      {...rest}
+      render={(props) => (
+        userLoggedIn
+          ? <Component {...props} />
+          : (
+            <Redirect to={{
+              pathname: '/',
+            }}
+            />
+          )
+      )}
+    />
+  );
+};
+
+PrivateRoute.propTypes = {
+  component: PropTypes.elementType.isRequired,
+};
+
+
+
 
 function App() {
   return (
@@ -28,13 +58,15 @@ function App() {
       <ToastProvider autoDismiss={true}>
       <BrowserRouter>
     <Switch>
-      <Route exact path="/" component={Login} />
-      <Route exact path="/DCandidates" component={BloodPatients} />
+      <Route exact path="/" component={Signin} />
+      <PrivateRoute exact path="/DCandidates" component={BloodPatients} />
+      <PrivateRoute path="/BloodDonors" component={DCandidates} />
+      <Route exact path="/Signup" component={SignUp} />
     </Switch>
     </BrowserRouter>
      
       
-<Footer Footer/>
+
   
 
       </ToastProvider>

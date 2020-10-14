@@ -5,9 +5,7 @@ import { Grid, TextField, withStyles, FormControl, InputLabel, Select, MenuItem,
 import AccountCircle from '@material-ui/icons/AccountCircle'
 import ButtonBases from "./ImageButtonComponent"
 import { Switch, Route,BrowserRouter } from 'react-router-dom';
-import Main from '../components/MainPageComponent'
 import DCandidates from '../components/DCandidates';
-
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";

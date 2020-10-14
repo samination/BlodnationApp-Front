@@ -3,9 +3,11 @@ import { connect } from "react-redux";
 import * as actions from "../actions/dCandidate";
 import { Grid, Paper, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, withStyles, ButtonGroup, Button,Avatar } from "@material-ui/core";
 import DCandidateForm from "./DCandidateForm";
+import PrimarySearchAppBar from "./HeaderComponent";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { useToasts } from "react-toast-notifications";
+import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 
 const styles = theme => ({  
     
@@ -35,6 +37,14 @@ const DCandidates = ({ classes, ...props }) => {
             props.deleteDCandidate(id,()=>addToast("Deleted successfully", { appearance: 'info' }))
     }
     return (
+        <div>
+            <FadeTransform in 
+                        transformProps={{
+                            exitTransform: 'scale(0.5) translateY(-50%)'
+                        }}>
+        <header>
+<PrimarySearchAppBar></PrimarySearchAppBar>
+        </header>
         <Paper className={classes.paper} elevation={3}>
             <Grid container>
                 <Grid item xs={6}>
@@ -77,6 +87,8 @@ const DCandidates = ({ classes, ...props }) => {
                 </Grid>
             </Grid>
         </Paper>
+        </FadeTransform>
+        </div>
     );
 }
 

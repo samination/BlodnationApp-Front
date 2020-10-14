@@ -7,6 +7,9 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import { useToasts } from "react-toast-notifications";
 import BloodPatientForm from "./BloodPatientForm";
 import PrimarySearchAppBar from "./HeaderComponent";
+import { useHistory } from 'react-router-dom';
+import { FadeTransform, Fade, Stagger } from 'react-animation-components';
+
 
 
 
@@ -27,6 +30,7 @@ const styles = theme => ({
 
 const BloodPatients = ({ classes, ...props }) => {
     const [currentId, setCurrentId] = useState(0)
+    const history = useHistory()
 
     useEffect(() => {
         props.fetchAllDCandidates()
@@ -39,8 +43,19 @@ const BloodPatients = ({ classes, ...props }) => {
         if (window.confirm('Are you sure to delete this record?'))
             props.deleteDCandidate(id,()=>addToast("Deleted successfully", { appearance: 'info' }))
     }
+
+    const handleMenuClose = () => {
+        
+         history.push("/BloodDonors");
+        window.location.reload();
+        
+      };
     return (
   <div>
+      <FadeTransform in 
+                        transformProps={{
+                            exitTransform: 'scale(0.5) translateY(-50%)'
+                        }}>
         <header>
 <PrimarySearchAppBar></PrimarySearchAppBar>
         </header>
@@ -84,6 +99,10 @@ const BloodPatients = ({ classes, ...props }) => {
                                                         onClick={() => onDelete(record.id)} /></Button>
                                                 </ButtonGroup>
                                             </TableCell>
+                                            <TableCell> 
+                                            <Button  variant="contained"
+                            className={classes.smMargin} onClick={handleMenuClose}>Show blood Donors </Button>
+                                            </TableCell>
                                         </TableRow>)
                                     })
                                 }
@@ -93,6 +112,7 @@ const BloodPatients = ({ classes, ...props }) => {
                 </Grid>
             </Grid>
         </Paper>
+        </FadeTransform>
         </div>
     );
 }

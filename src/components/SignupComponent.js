@@ -84,7 +84,7 @@ const Signup = ({ classes, ...props }) => {
                 resetForm()
                 addToast("Congaaats you are now a blood donation user :)", { appearance: 'success' })
             }
-         
+            resetForm()
                 props.createDCandidate(values, onSuccess)
                 addToast(" Congaaats you are now a blood donation user :)", { appearance: 'success' })
             
