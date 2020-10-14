@@ -5,21 +5,14 @@ import { store } from "./actions/store";
 import { Provider } from "react-redux";
 import DCandidates from './components/DCandidates';
 import BloodPatients from './components/BloodPatients'
-import Login from './components/LoginComponent'
 import Signin from './components/SignIn'
-import PrimarySearchAppBar from './components/HeaderComponent'
-import { Container,BottomNavigation} from "@material-ui/core";
 import { ToastProvider } from "react-toast-notifications";
-import Footer from "./components/FooterComponent"
 import SimpleMap from "./components/MapComponent"
 import GoogleMapReact from 'google-map-react';
 import { Switch, Route,BrowserRouter,Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
-
-
-
 import SignUp from "./components/RegistrationComponent"
-import { login } from './actions/Login';
+
 
 
 

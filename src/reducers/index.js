@@ -6,8 +6,6 @@ import {message} from "./Message";
 
 
 export const reducers = combineReducers({
-
-    
    dCandidate,
    BloodPatient,
    message,

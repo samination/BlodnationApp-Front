@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import * as actions from "../actions/BloodPatient";
-import { Grid, Paper, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, withStyles, ButtonGroup, Button ,Avatar} from "@material-ui/core";
+import { Grid, Paper, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, withStyles, ButtonGroup, Button ,Avatar,TablePagination } from "@material-ui/core";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { useToasts } from "react-toast-notifications";
@@ -9,6 +9,7 @@ import BloodPatientForm from "./BloodPatientForm";
 import PrimarySearchAppBar from "./HeaderComponent";
 import { useHistory } from 'react-router-dom';
 import { FadeTransform, Fade, Stagger } from 'react-animation-components';
+import FooterPage from './FooterComponent'
 
 
 
@@ -31,6 +32,8 @@ const styles = theme => ({
 const BloodPatients = ({ classes, ...props }) => {
     const [currentId, setCurrentId] = useState(0)
     const history = useHistory()
+    const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(2);
 
     useEffect(() => {
         props.fetchAllDCandidates()
@@ -44,6 +47,15 @@ const BloodPatients = ({ classes, ...props }) => {
             props.deleteDCandidate(id,()=>addToast("Deleted successfully", { appearance: 'info' }))
     }
 
+    const handleChangePage = (event, newPage) => {
+        setPage(newPage);
+      };
+    
+      const handleChangeRowsPerPage = (event) => {
+        setRowsPerPage(+event.target.value);
+        setPage(0);
+      };
+
     const handleMenuClose = () => {
         
          history.push("/BloodDonors");
@@ -51,6 +63,7 @@ const BloodPatients = ({ classes, ...props }) => {
         
       };
     return (
+        <div>
   <div>
       <FadeTransform in 
                         transformProps={{
@@ -73,6 +86,7 @@ const BloodPatients = ({ classes, ...props }) => {
                     <TableContainer>
                         <Table>
                             <TableHead className={classes.root}>
+                            
                                 <TableRow>
                                     <TableCell>Profile Photo</TableCell>
                                     <TableCell>Blood Patient Name</TableCell>
@@ -83,6 +97,7 @@ const BloodPatients = ({ classes, ...props }) => {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
+                            
                                 {
                                     props.dCandidateList.map((record, index) => {
                                         return (<TableRow key={index} hover>
@@ -106,6 +121,16 @@ const BloodPatients = ({ classes, ...props }) => {
                                         </TableRow>)
                                     })
                                 }
+                                
+                                <TablePagination
+        rowsPerPageOptions={[2, 25, 100]}
+        component="div"
+        count="3"
+        rowsPerPage={rowsPerPage}
+        page={page}
+        onChangePage={handleChangePage}
+        onChangeRowsPerPage={handleChangeRowsPerPage}
+      />
                             </TableBody>
                         </Table>
                     </TableContainer>
@@ -113,7 +138,9 @@ const BloodPatients = ({ classes, ...props }) => {
             </Grid>
         </Paper>
         </FadeTransform>
+        
         </div>
+       </div>
     );
 }
 

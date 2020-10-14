@@ -55,7 +55,7 @@ const DCandidates = ({ classes, ...props }) => {
                         <Table>
                             <TableHead className={classes.root}>
                                 <TableRow>
-                                    <TableCell>Blood Donor Profile Picture</TableCell>
+                                    <TableCell>Donor Profile Picture</TableCell>
                                     <TableCell>Blood Donor Name</TableCell>
                                     <TableCell>Blood Donor Mobile</TableCell>
                                     <TableCell>Blood Donor Blood Group</TableCell>

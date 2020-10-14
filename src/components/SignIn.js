@@ -17,6 +17,7 @@ import { login } from "../actions/Login";
 import Form from "react-validation/build/form";
 import CheckButton from "react-validation/build/button";
 import { useToasts } from "react-toast-notifications";
+import { Switch, Route,BrowserRouter,Redirect } from 'react-router-dom';
 
 
 const required = (value) => {
@@ -89,7 +90,7 @@ const Signin = (props) => {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
-  /*const { isLoggedIn } = useSelector (state => state.isLoggedIn);*/
+  const { isLoggedIn } = useSelector (state => state.login.isLoggedIn);
   const { message } = useSelector(state => state.message);
   const { addToast } = useToasts()
 
@@ -127,6 +128,12 @@ const Signin = (props) => {
       setLoading(false);
     }
   };
+
+  if (localStorage.getItem("user")) {
+    props.history.push("/DCandidates");
+          window.location.reload();
+  }
+
   
 
   return (

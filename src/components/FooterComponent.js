@@ -1,76 +1,44 @@
-import React from 'react';
-import LinkIcon from '@material-ui/icons/Link';
-import {Link} from '@material-ui/core'
-import PhoneIcon from '@material-ui/icons/Phone';
-import InfoIcon from '@material-ui/icons/Info'
-import WebIcon from '@material-ui/icons/Web';
-import MenuIcon from '@material-ui/icons/Menu';
-import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
-import ContactMailIcon from '@material-ui/icons/ContactMail';
-import HomeIcon from '@material-ui/icons/Home';
-import FacebookIcon from '@material-ui/icons/Facebook';
-import LinkedInIcon from '@material-ui/icons/LinkedIn';
-import TwitterIcon from '@material-ui/icons/Twitter';
-import YouTubeIcon from '@material-ui/icons/YouTube';
-import MailIcon from '@material-ui/icons/Mail';
+import React from "react";
+import { MDBCol, MDBContainer, MDBRow, MDBFooter } from "mdbreact";
 
+const FooterPage = () => {
+  return (
+    <MDBFooter color="blue" className="font-small pt-4 mt-4">
+      <MDBContainer fluid className="text-center text-md-left">
+        <MDBRow>
+          <MDBCol md="6">
+            <h5 className="title">Footer Content</h5>
+            <p>
+              Here you can use rows and columns here to organize your footer
+              content.
+            </p>
+          </MDBCol>
+          <MDBCol md="6">
+            <h5 className="title">Links</h5>
+            <ul>
+              <li className="list-unstyled">
+                <a href="#!">Link 1</a>
+              </li>
+              <li className="list-unstyled">
+                <a href="#!">Link 2</a>
+              </li>
+              <li className="list-unstyled">
+                <a href="#!">Link 3</a>
+              </li>
+              <li className="list-unstyled">
+                <a href="#!">Link 4</a>
+              </li>
+            </ul>
+          </MDBCol>
+        </MDBRow>
+      </MDBContainer>
+      <div className="footer-copyright text-center py-3">
+        <MDBContainer fluid>
+          &copy; {new Date().getFullYear()} Copyright: <a href="https://www.mdbootstrap.com"> MDBootstrap.com </a>
+        </MDBContainer>
+      </div>
+    </MDBFooter>
+  );
+}
 
-
-  
-
-
-
-
-  export default function Footer() {
-
-
-    return(
-
-        <div className="footer">
-        <div className="container">
-            <div className="row justify-content-center">             
-                <div className="col-4 offset-1 col-sm-2">
-                    <h5><LinkIcon/>Links</h5>
-                    <ul className="list-unstyled">
-                    <li><Link to="/home"><HomeIcon/>Home</Link></li>
-                        <li><Link to="/aboutus"><InfoIcon/>About Us</Link></li>
-                        <li><Link to="/menu"><MenuIcon/>Menu</Link></li>
-                        <li><Link to="/contactus"><ContactMailIcon/>Contact Us</Link></li>
-                    </ul>
-                </div>
-                <div className="col-7 col-sm-5">
-                    <h5>Our Address <LocationOnOutlinedIcon /></h5>
-                    <address>
-                    Daimel Str 6A<br />
-                    Hermulheim, Hurth<br />
-                    Germany<br />
-                    <PhoneIcon/>+49 564132145 <br/>
-                    <PhoneIcon className="fa fa-fax fa-lg"></PhoneIcon>: +49 564132145<br />
-                    <WebIcon />: <a href=".net">
-                        blood@donation.net</a>
-                    </address>
-                </div>
-                <div className="col-12 col-sm-4 align-self-center">
-                    <div className="text-center">
-                        <a className="btn btn-social-icon btn-google" href="http://google.com/+"><i className="fa fa-google-plus"></i></a>
-                        <FacebookIcon href="www.facebook.com" />
-                        <LinkedInIcon />
-                        <TwitterIcon />
-                        <YouTubeIcon />
-                       <MailIcon />
-                    </div>
-                </div>
-            </div>
-            <div className="row justify-content-center">             
-                <div className="col-auto">
-                    <p>© Copyright 2020 Blood Donation</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    )
-
-
-
-
-  }
+export default FooterPage;
