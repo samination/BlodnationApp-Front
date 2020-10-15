@@ -38,10 +38,7 @@ const initialFieldValues = {
 
 
 const BloodPatientForm = ({ classes, ...props }) => {
-
-    //toast msg.
     const { addToast } = useToasts()
-
     //validate()
     //validate({fullName:'jenny'})
     const validate = (fieldValues = values) => {
